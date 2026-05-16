@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sign up - Vaniday</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="center-page">
+  <div class="card">
+    <h1>Create account</h1>
+    <p class="muted">Join Vaniday</p>
+
+    <div class="role-row">
+      <button type="button" id="roleCustomer" class="btn role-btn active" onclick="pickRole('customer')">
+        Customer
+      </button>
+      <button type="button" id="roleOwner" class="btn role-btn" onclick="pickRole('owner')">
+        Shop Owner
+      </button>
+    </div>
+
+    <button class="btn btn-outline full" onclick="googleSignup()">
+      Continue with Google
+    </button>
+
+    <form onsubmit="signupUser(event)">
+      <input type="text" id="name" placeholder="Your name" required />
+      <input type="text" id="shopName" placeholder="Shop name" style="display:none" />
+      <input type="email" id="email" placeholder="Email" required />
+      <input type="password" id="password" placeholder="Password" required />
+      <button type="submit" class="btn btn-dark full">Sign up</button>
+    </form>
+
+    <p class="center">
+      Already have an account? <a href="login.html">Log in</a>
+    </p>
+  </div>
+
+  <script>
+    var role = "customer";
+
+    function pickRole(r) {
+      role = r;
+      document.getElementById("roleCustomer").classList.toggle("active", r === "customer");
+      document.getElementById("roleOwner").classList.toggle("active", r === "owner");
+      var shop = document.getElementById("shopName");
+      if (r === "owner") {
+        shop.style.display = "block";
+        shop.required = true;
+      } else {
+        shop.style.display = "none";
+        shop.required = false;
+      }
+    }
+
+    function signupUser(e) {
+      e.preventDefault();
+      var name = document.getElementById("name").value;
+      alert("Welcome, " + name + "!");
+      window.location.href = "dashboard.html";
+    }
+
+    function googleSignup() {
+      alert("Signed in with Google!");
+      window.location.href = "dashboard.html";
+    }
+  </script>
+</body>
+</html>
