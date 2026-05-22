@@ -1,69 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Sign up - Vaniday</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body class="center-page">
-  <div class="card">
-    <h1>Create account</h1>
-    <p class="muted">Join Vaniday</p>
 
-    <div class="role-row">
-      <button type="button" id="roleCustomer" class="btn role-btn active" onclick="pickRole('customer')">
-        Customer
-      </button>
-      <button type="button" id="roleOwner" class="btn role-btn" onclick="pickRole('owner')">
-        Shop Owner
-      </button>
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Signup</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <nav>
+
+        <h1>Vaniday</h1>
+
+        <div>
+
+            <a href="index.html">Home</a>
+
+            <a href="merchants.html">Merchants</a>
+
+            <a href="booking.html">Book</a>
+
+            <a href="my-booking.html">My Bookings</a>
+
+            <a href="dashboard.html">Dashboard</a>
+
+            <a href="login.html">Login</a>
+
+            <a href="signup.html">Signup</a>
+
+        </div>
+
+    </nav>
+
+
+    <div class="form-container">
+
+        <h1>Create Account</h1>
+
+        <input type="text" placeholder="Full Name" required>
+
+        <input type="email" placeholder="Enter Email" required>
+
+        <input type="password" placeholder="Enter Password" required>
+
+
+        <select>
+
+            <option>Customer</option>
+
+            <option>Shop Owner</option>
+
+        </select>
+
+
+        <button onclick="window.location.href='dashboard.html'">
+
+            Signup
+
+        </button>
+
+
+        <p>
+            Already have an account?
+            <a href="login.html">Login here</a>
+        </p>
+
     </div>
 
-    <button class="btn btn-outline full" onclick="googleSignup()">
-      Continue with Google
-    </button>
-
-    <form onsubmit="signupUser(event)">
-      <input type="text" id="name" placeholder="Your name" required />
-      <input type="text" id="shopName" placeholder="Shop name" style="display:none" />
-      <input type="email" id="email" placeholder="Email" required />
-      <input type="password" id="password" placeholder="Password" required />
-      <button type="submit" class="btn btn-dark full">Sign up</button>
-    </form>
-
-    <p class="center">
-      Already have an account? <a href="login.html">Log in</a>
-    </p>
-  </div>
-
-  <script>
-    var role = "customer";
-
-    function pickRole(r) {
-      role = r;
-      document.getElementById("roleCustomer").classList.toggle("active", r === "customer");
-      document.getElementById("roleOwner").classList.toggle("active", r === "owner");
-      var shop = document.getElementById("shopName");
-      if (r === "owner") {
-        shop.style.display = "block";
-        shop.required = true;
-      } else {
-        shop.style.display = "none";
-        shop.required = false;
-      }
-    }
-
-    function signupUser(e) {
-      e.preventDefault();
-      var name = document.getElementById("name").value;
-      alert("Welcome, " + name + "!");
-      window.location.href = "dashboard.html";
-    }
-
-    function googleSignup() {
-      alert("Signed in with Google!");
-      window.location.href = "dashboard.html";
-    }
-  </script>
 </body>
+
 </html>
