@@ -2,94 +2,96 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Booking</title>
-
     <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
 
     <nav>
-
         <h1>Vaniday</h1>
 
         <div>
-
             <a href="index.html">Home</a>
-
             <a href="merchants.html">Merchants</a>
-
             <a href="booking.html">Book</a>
-
             <a href="my-booking.html">My Bookings</a>
-
             <a href="dashboard.html">Dashboard</a>
-
             <a href="login.html">Login</a>
-
             <a href="signup.html">Signup</a>
-
         </div>
-
     </nav>
-
 
     <div class="form-container">
 
         <h1>Book Appointment</h1>
 
+        <input id="customerName" type="text" placeholder="Customer Name" required>
 
-        <input type="text"
-               placeholder="Customer Name"
-               required>
-
-
-        <select>
-
-            <option>Select Merchant</option>
-
+        <select id="merchant">
+            <option value="">Select Merchant</option>
             <option>Glow Beauty Salon</option>
-
             <option>Luxury Spa</option>
-
             <option>Elite Barber</option>
-
+            <option>Urban Nails Studio</option>
+            <option>Beauty Bliss</option>
+            <option>Golden Touch Spa</option>
+            <option>Fresh Fade Barber</option>
+            <option>Royal Hair Salon</option>
+            <option>Heavenly Massage</option>
+            <option>Chic Beauty Lounge</option>
+            <option>Velvet Skin Care</option>
         </select>
 
-
-        <select>
-
-            <option>Select Service</option>
-
+        <select id="service">
+            <option value="">Select Service</option>
             <option>Haircut</option>
-
             <option>Massage</option>
-
             <option>Facial</option>
-
             <option>Hair Styling</option>
-
+            <option>Manicure</option>
+            <option>Pedicure</option>
+            <option>Hair Coloring</option>
+            <option>Waxing</option>
+            <option>Beard Trim</option>
+            <option>Head Spa</option>
         </select>
 
+        <input id="bookingDate" type="date" required>
 
-        <input type="date" required>
+        <input id="bookingTime" type="time" required>
 
-        <input type="time" required>
-
-
-        <button onclick="window.location.href='my-booking.html'">
-
+        <button onclick="saveBooking()">
             Confirm Booking
-
         </button>
 
     </div>
+
+    <script>
+        function saveBooking() {
+
+            var customerName = document.getElementById("customerName").value;
+            var merchant = document.getElementById("merchant").value;
+            var service = document.getElementById("service").value;
+            var bookingDate = document.getElementById("bookingDate").value;
+            var bookingTime = document.getElementById("bookingTime").value;
+
+            if (customerName == "" || merchant == "" || service == "" || bookingDate == "" || bookingTime == "") {
+                alert("Please fill in all booking details.");
+            }
+            else {
+                localStorage.setItem("customerName", customerName);
+                localStorage.setItem("merchant", merchant);
+                localStorage.setItem("service", service);
+                localStorage.setItem("bookingDate", bookingDate);
+                localStorage.setItem("bookingTime", bookingTime);
+
+                window.location.href = "my-booking.html";
+            }
+        }
+    </script>
 
 </body>
 
